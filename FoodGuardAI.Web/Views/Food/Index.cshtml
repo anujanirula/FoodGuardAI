@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Analyze Food";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <h1 class="mb-3">Analyze Food</h1>
+        <p class="text-muted">Upload a clear image of your food for analysis.</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-controller="Food" asp-action="Analyze" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="image" class="form-label">Food image</label>
+                <input id="image"
+                       name="image"
+                       class="form-control"
+                       type="file"
+                       accept="image/*"
+                       required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Analyze image</button>
+        </form>
+    </div>
+</div>
